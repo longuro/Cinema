@@ -1,0 +1,6 @@
+C:\Users\longu\source\repos\Cinema1\Cinema\bin\Release\Cinema.exe.config
+C:\Users\longu\source\repos\Cinema1\Cinema\bin\Release\Cinema.exe
+C:\Users\longu\source\repos\Cinema1\Cinema\bin\Release\Cinema.pdb
+C:\Users\longu\source\repos\Cinema1\Cinema\obj\Release\Cinema.csproj.CoreCompileInputs.cache
+C:\Users\longu\source\repos\Cinema1\Cinema\obj\Release\Cinema.exe
+C:\Users\longu\source\repos\Cinema1\Cinema\obj\Release\Cinema.pdb
