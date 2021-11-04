@@ -94,7 +94,7 @@ namespace Cinema
             int ticket_row = int.Parse(Console.ReadLine());//Считывает вписанный пользователем ряд и записывает в переменную
             Console.WriteLine("Количество билетов:");
             int howmuch = int.Parse(Console.ReadLine());//Считывает количество покупаемых пользователем билетов и записывает в переменную
-            int seatposition = (seat / 2);//Вычисление номера места в середине ряда
+            int seatposition = (seat / 2) - howmuch;//Вычисление номера места в середине ряда
             bool t = false;//Возвращает логическое значение, если возвращается true - покупаются места
             int k = 0;//Ввод переменной изначальных купленных билетов
             Console.Clear();//Очистка консоли
