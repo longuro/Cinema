@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -94,18 +94,18 @@ namespace Cinema
             int ticket_row = int.Parse(Console.ReadLine());//Считывает вписанный пользователем ряд и записывает в переменную
             Console.WriteLine("Количество билетов:");
             int howmuch = int.Parse(Console.ReadLine());//Считывает количество покупаемых пользователем билетов и записывает в переменную
-            int seatposition = (seat / 2) - howmuch;//Вычисление номера места в середине ряда
+            int seatposition = (seat - howmuch) / 2;//Вычисление номера места в середине ряда в зависимости от количества билетов
             bool t = false;//Возвращает логическое значение, если возвращается true - покупаются места
-            int k = 0;//Ввод переменной изначальных купленных билетов
+            int seats = 0;//Ввод переменной купленных мест
             Console.Clear();//Очистка консоли
-            while (howmuch != k)//Работа цикла, пока места не будут выбраны
+            while (howmuch != seats)//Работа цикла, пока места не будут выбраны
             {
-                if (hall[ticket_row, seatposition] == 0)//Если место в середине ряда свободно
+                if (hall[ticket_row - 1, seatposition - 1] == 0)//Если место в середине ряда свободно
                 {
                     Console.WriteLine($"{seatposition} место свободно");
                     t = true;//Возвращает положительное значение t
                     seatposition++;//Увеличение номера места
-                    k++;//Увеличение значения купленных билетов
+                    seats++;//Увеличение значения купленных билетов
                 }
                 else//Если место в середине ряда занято
                 {
@@ -117,11 +117,13 @@ namespace Cinema
 
             if (t == true)//Если указанное количество пользователем мест в середине свободно
             {
-                for (int i = 0; i < (howmuch + 1); i++)
+                int seaats = 0;//Ввод переменной для цикла, имитирует количество выбранных мест
+                int middleseat = (seat - howmuch) / 2;//Вычисление номера места в середине ряда в зависимости от количества билетов
+                while (howmuch != seaats)//Цикл, пока количество купленных мест не будет равняться количеству билетов
                 {
-                    int middleseat = seat / 2;
-                    hall[ticket_row - 1, middleseat - 1] = 1;
+                    hall[ticket_row - 1, middleseat - 1] = 1;//Переписывает значение выбранного места, чтобы значение стало "1" и считалось как занятым
                     middleseat++;
+                    seaats++;
                 }
                 Console.WriteLine("Ваши места:");
                 for (int userseat = seat / 2; userseat < (seat / 2) + howmuch; userseat++)//Цикл для перечисления купленных мест
@@ -147,7 +149,7 @@ namespace Cinema
                 HallSize();//Рисует зал
                 Console.WriteLine();
 
-                int userseat = 0;//Число купленных билетов
+                int userseat = 0;//Число купленных мест
                 Console.WriteLine("Выбрать самому - 1\nАвто выбор - 2\nЗакончить - 3");//Перечисление вариантов для пользователя во время покупки билетов
                 int userchoice = int.Parse(Console.ReadLine());//Записывание введённого пользователем варианта покупки мест в переменную
                 Console.WriteLine("");
@@ -155,13 +157,13 @@ namespace Cinema
                 {
                     Console.WriteLine("Количество покупаемых билетов?");
                     int quantity = int.Parse(Console.ReadLine());//Считывает и записывает значение, введённое пользователем в переменную для хранения количества покупаемых билетов
-                    for (int i = 0; i < (seat - 1) * (row - 1); i++)//Цикл для покупки билетов
+                    for (int i = 0; i < (seat - 1) * (row - 1); i++)//Цикл для выбора мест
                     {
                         if (Person())//Запуск функции покупки билетов пользователем
                         {
-                            userseat++;//Увеличение числа купленных билетов
+                            userseat++;//Увеличение числа купленных мест
                         }
-                        if (userseat == quantity)//Если все билеты куплены и места выбраны
+                        if (userseat == quantity)//Если все места выбраны
                         {
                             break;//Остановка функции
                         }
