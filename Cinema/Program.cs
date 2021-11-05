@@ -128,7 +128,7 @@ namespace Cinema
                 Console.WriteLine("Ваши места:");
                 for (int userseat = seat / 2; userseat < (seat / 2) + howmuch; userseat++)//Цикл для перечисления купленных мест
                 {
-                    Console.WriteLine($"{userseat}");//Пишет купленные места
+                    Console.WriteLine(userseat);//Пишет купленные места
                 }
             }
             else//Если указанное количество пользователем мест в середине не свободно
